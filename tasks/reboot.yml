@@ -1,0 +1,19 @@
+- name: Basic CentOS | check reboot
+  shell: needs-restarting -r
+  register: rebootcheck_out
+  ignore_errors: yes
+  changed_when: false
+    
+- name: Basic CentOS | Reboot
+  reboot:
+    reboot_timeout: 3600
+    # if the exit is not 0 then we need to reboot
+  when: rebootcheck_out.rc != 0
+
+- name: Basic CentOS | Nightly reboot
+  cron:
+    name: "Update Reboot check"
+    minute: "13"
+    hour: "0,12"
+    job: "needs-restarting -r || shutdown -rt now"
+  when: schedule_update_reboot

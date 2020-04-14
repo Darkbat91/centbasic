@@ -1,0 +1,19 @@
+# Basic SSH Hardening
+sshd: true
+
+ssh_banner_text: "Unauthorized access to this machine is prohibited."
+
+# Common Centos Aliases
+alias: true
+
+# Update all the packages on the system
+updateall: true
+
+# Configure yumcron to update security settings only
+yumcron: true
+
+# Allow this command to reboot the system if necessary
+allow_reboot: false
+
+# Schedule a cronjob to check for reboots and restart the machine if necessary 
+schedule_update_reboot: false

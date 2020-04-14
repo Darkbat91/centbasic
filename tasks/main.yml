@@ -1,0 +1,44 @@
+#wait_for_connecetion
+- name: Basic CentOS | Install utils
+  package:
+    pkg:
+      - vim
+      - fail2ban
+      - ntp
+      - logrotate
+      - yum-cron
+      - yum-utils
+      - iptables-services
+      - policycoreutils-python
+    state: present 
+    update_cache: yes
+
+- name: Basic CentOS | Shell Alias
+  copy:
+    src: ../files/alias.sh
+    dest: /etc/profile.d/alias.sh
+  when: alias
+
+- name: Basic CentOS | Configure yumcron
+  import_tasks: yumcron.yml
+  when: yumcron
+  tags: yumcron
+
+
+- name: Basic CentOS | Configure sshd
+  import_tasks: sshd.yml
+  when: sshd
+  tags: ssh
+
+- name: Basic CentOS |upgrade any out of date packages
+  yum:
+    name: '*'
+    state: latest
+    update_cache: yes
+  when: updateall
+  tags: update
+
+- name: Basic CentOS | Reboot check
+  import_tasks: reboot.yml
+  when: allow_reboot
+  tags: reboot

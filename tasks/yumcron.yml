@@ -1,0 +1,23 @@
+- name: Basic CentOS | Install yum-cron
+  package:
+    pkg:
+      - yum-cron
+    state: present 
+    update_cache: yes
+
+- name: Basic CentOS | Configure yum-cron
+  lineinfile:
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    dest: /etc/yum/yum-cron.conf
+    state: present
+  with_items:
+    - {regexp: '^update_cmd\s*=\s*', line: "update_cmd = security"}
+    - {regexp: '^apply_updates\s*=\s*', line: "apply_updates = yes"}
+
+- name: Basic CentOS | enable  yum-cron
+  service:
+    name: "yum-cron"
+    state: started  
+    enabled: true
+  when: true
