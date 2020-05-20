@@ -17,3 +17,6 @@ allow_reboot: false
 
 # Schedule a cronjob to check for reboots and restart the machine if necessary 
 schedule_update_reboot: false
+
+# Permit the TCP and user agent forwarding turning the host into a Bastion
+permit_ssh_forward: false

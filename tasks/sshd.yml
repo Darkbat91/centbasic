@@ -9,7 +9,7 @@
     - { reg: '^(#)?PasswordAuthentication', line: 'PasswordAuthentication no'}
     # V-38613 - The ssh daemon must not permit root logins
     - { reg: '^(#)?PermitRootLogin', line: 'PermitRootLogin no'}
-    - { reg: '^(#)?AllowTcpForwarding', line: 'AllowTcpForwarding no'}
+    - { reg: '^(#)?AllowTcpForwarding', line: 'AllowTcpForwarding {% if permit_ssh_forward %}yes{% else %}no{% endif %}'}
     - { reg: '^(#)?Compression', line: 'Compression no'}
     - { reg: '^(#)?LogLevel', line: 'LogLevel VERBOSE'}
     - { reg: '^(#)?MaxAuthTries', line: 'MaxAuthTries 1'}
@@ -41,7 +41,7 @@
     - { reg: '^(#)?Banner', line: 'Banner /etc/issue'}
     # Suggested by lynis audit
     - { reg: '^(#)?UseDNS', line: 'UseDNS no'}
-    - { reg: '^(#)?AllowAgentForwarding', line: 'AllowAgentForwarding no'}
+    - { reg: '^(#)?AllowAgentForwarding', line: 'AllowAgentForwarding {% if permit_ssh_forward %}yes{% else %}no{% endif %}'}
     # CCE-4475-0 - Emulation of the rsh command through the ssh server should be disabled
     - { reg: '^(#)?RhostsRSAAuthentication', line: 'RhostsRSAAuthentication = no'}
 
