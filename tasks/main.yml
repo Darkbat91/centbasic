@@ -24,6 +24,31 @@
   when: yumcron
   tags: yumcron
 
+- name: Basic CentOS | Configure passwords
+  import_tasks: passwords.yml
+  when: passwords
+  tags: passwords
+
+- name: Basic CentOS | Disable zeroconf
+  lineinfile:
+    dest: "/etc/sysconfig/network"
+    regexp: ^NOZEROCONF=
+    line: NOZEROCONF=yes
+    state: present
+    create: true    
+
+- name: Basic CentOS | harden rsyslog conf
+  file:
+    path: /etc/rsyslog.conf
+    mode: "{{ rsyslog_mask }}"
+  when: hardenrsyslog
+
+- name: Basic CentOS | harden rsyslog d
+  file:
+    path: /etc/rsyslog.d
+    recurse: yes
+    mode: "{{ rsyslog_mask }}"
+  when: hardenrsyslog
 
 - name: Basic CentOS | Configure sshd
   import_tasks: sshd.yml

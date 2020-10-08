@@ -6,6 +6,18 @@ ssh_banner_text: "Unauthorized access to this machine is prohibited."
 # Common Centos Aliases
 alias: true
 
+# Configure password restrictions
+passwords: true
+
+# Minimum password length
+password_min_length: 15
+
+# Configure to harden rsyslog
+hardenrsyslog: true
+
+# Enable syslog mask
+rsyslog_mask: 0600
+
 # Update all the packages on the system
 updateall: true
 
