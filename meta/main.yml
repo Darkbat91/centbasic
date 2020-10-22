@@ -1,2 +1,4 @@
 dependencies:
-  - role: repo-epel
+  - src: https://github.com/Darkbat91/ansible-role-repo-epel
+    version: master 
+    name: repo-epel 
