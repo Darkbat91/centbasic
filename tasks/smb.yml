@@ -1,0 +1,19 @@
+- name: Basic CentOS | Check if Samba is installed
+  stat:
+    path: /usr/lib/systemd/system/smb.service
+  register: sambainstalled
+
+- name: Basic CentOS | set minimum protocol to SMB2
+  lineinfile:
+    insertafter: '^\[global\]$'
+    dest: /etc/samba/smb.conf
+    regexp: '\smin protocol = SMB2'
+    line: "\tmin protocol = SMB2"
+    state: present
+  when: sambainstalled.stat.exists
+
+- name: Basic CentOS | Remove the smb configuration file
+  file:
+    path: /etc/samba
+    state: absent
+  when: not sambainstalled.stat.exists

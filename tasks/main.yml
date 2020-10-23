@@ -67,3 +67,8 @@
   import_tasks: reboot.yml
   when: allow_reboot
   tags: reboot
+
+- name: Basic CentOS | SMB Check
+  import_tasks: smb.yml
+  when: secure_smb
+  tags: smb

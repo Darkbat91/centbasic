@@ -32,3 +32,6 @@ schedule_update_reboot: false
 
 # Permit the TCP and user agent forwarding turning the host into a Bastion
 permit_ssh_forward: false
+
+# Configure to harden smb 
+secure_smb: true
