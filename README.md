@@ -21,3 +21,6 @@ Two optional settings are
 ## Tags
 
 Each of these systems are also tagged so only parts of the playbook can run across many systems
+
+## Changelog
+The [changelog](./CHANGELOG.md) is stored externally
