@@ -6,7 +6,7 @@
   changed_when: false
   tags:
     - skip_ansible_lint
-    
+
 - name: Basic CentOS | Reboot
   reboot:
     reboot_timeout: 3600

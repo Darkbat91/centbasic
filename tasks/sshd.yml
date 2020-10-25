@@ -1,3 +1,4 @@
+---
 - name: Basic CentOS | SSHD configuration
   lineinfile:
     dest: /etc/ssh/sshd_config
