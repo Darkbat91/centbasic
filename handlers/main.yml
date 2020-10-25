@@ -1,5 +1,6 @@
 ---
 - name: Restart sshd
   service:
-          name: sshd
-          state: restarted
+    name: sshd
+    state: restarted
+  listen: restart_sshd
