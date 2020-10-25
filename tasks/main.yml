@@ -63,7 +63,10 @@
     state: latest
     update_cache: true
   when: updateall
-  tags: update
+  tags:
+    - skip_ansible_lint
+    - update
+
 
 - name: Basic CentOS | Reboot check
   import_tasks: reboot.yml

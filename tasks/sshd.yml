@@ -49,6 +49,7 @@
   copy:
     content: "{{ ssh_banner_text }}\n"
     dest: "{{ item }}"
+    mode: 0440
   with_items:
     - /etc/issue
     - /etc/issue.net
