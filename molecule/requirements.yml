@@ -1,3 +1,4 @@
+---
 - src: https://github.com/Darkbat91/centbasic
-  version: v1 
-  name: centbasic 
+  version: v1
+  name: centbasic
