@@ -1,5 +1,5 @@
 ---
-- name: Restart sshd
+- name: Basic CentOS | SSHD Restart
   service:
     name: sshd
     state: restarted
