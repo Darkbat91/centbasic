@@ -17,3 +17,4 @@
     path: /etc/samba
     state: absent
   when: not sambainstalled.stat.exists
+  

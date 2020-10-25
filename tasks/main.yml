@@ -1,4 +1,4 @@
-#wait_for_connecetion
+---
 - name: Basic CentOS | Install utils
   package:
     pkg:
@@ -10,7 +10,7 @@
       - yum-utils
       - iptables-services
       - policycoreutils-python
-    state: present 
+    state: present
     update_cache: yes
 
 - name: Basic CentOS | Shell Alias
@@ -35,7 +35,7 @@
     regexp: ^NOZEROCONF=
     line: NOZEROCONF=yes
     state: present
-    create: true    
+    create: true
 
 - name: Basic CentOS | harden rsyslog conf
   file:

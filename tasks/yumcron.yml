@@ -2,7 +2,7 @@
   package:
     pkg:
       - yum-cron
-    state: present 
+    state: present
     update_cache: yes
 
 - name: Basic CentOS | Configure yum-cron
@@ -18,6 +18,6 @@
 - name: Basic CentOS | enable  yum-cron
   service:
     name: "yum-cron"
-    state: started  
+    state: started
     enabled: true
   when: true

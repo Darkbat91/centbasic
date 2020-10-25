@@ -1,3 +1,4 @@
+---
 - name: Basic CentOS | check reboot
   shell: needs-restarting -r
   register: rebootcheck_out

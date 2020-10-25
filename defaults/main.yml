@@ -1,3 +1,4 @@
+---
 # Basic SSH Hardening
 sshd: true
 
@@ -27,11 +28,11 @@ yumcron: true
 # Allow this command to reboot the system if necessary
 allow_reboot: false
 
-# Schedule a cronjob to check for reboots and restart the machine if necessary 
+# Schedule a cronjob to check for reboots and restart the machine if necessary
 schedule_update_reboot: false
 
 # Permit the TCP and user agent forwarding turning the host into a Bastion
 permit_ssh_forward: false
 
-# Configure to harden smb 
+# Configure to harden smb
 secure_smb: true

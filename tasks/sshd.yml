@@ -45,7 +45,6 @@
     # CCE-4475-0 - Emulation of the rsh command through the ssh server should be disabled
     - { reg: '^(#)?RhostsRSAAuthentication', line: 'RhostsRSAAuthentication = no'}
 
-
 - name: Basic CentOS | Add legal banner
   copy:
     content: "{{ ssh_banner_text }}\n"
