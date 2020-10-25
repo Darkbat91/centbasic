@@ -1,6 +1,10 @@
 ---
 dependency:
   name: galaxy
+  options:
+    ignore-certs: true
+    role-file: molecule/requirements.yml
+
 driver:
   name: docker
 lint: |
