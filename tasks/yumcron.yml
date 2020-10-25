@@ -1,9 +1,10 @@
+---
 - name: Basic CentOS | Install yum-cron
   package:
     pkg:
       - yum-cron
     state: present
-    update_cache: yes
+    update_cache: true
 
 - name: Basic CentOS | Configure yum-cron
   lineinfile:

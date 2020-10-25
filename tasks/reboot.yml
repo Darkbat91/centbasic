@@ -2,9 +2,9 @@
 - name: Basic CentOS | check reboot
   shell: needs-restarting -r
   register: rebootcheck_out
-  ignore_errors: yes
+  ignore_errors: true
   changed_when: false
-    
+
 - name: Basic CentOS | Reboot
   reboot:
     reboot_timeout: 3600

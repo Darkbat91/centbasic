@@ -1,3 +1,4 @@
+---
 - name: Basic CentOS | Check if Samba is installed
   stat:
     path: /usr/lib/systemd/system/smb.service
@@ -17,4 +18,3 @@
     path: /etc/samba
     state: absent
   when: not sambainstalled.stat.exists
-  

@@ -11,7 +11,7 @@
       - iptables-services
       - policycoreutils-python
     state: present
-    update_cache: yes
+    update_cache: true
 
 - name: Basic CentOS | Shell Alias
   copy:
@@ -46,7 +46,7 @@
 - name: Basic CentOS | harden rsyslog d
   file:
     path: /etc/rsyslog.d
-    recurse: yes
+    recurse: true
     mode: "{{ rsyslog_mask }}"
   when: hardenrsyslog
 
@@ -59,7 +59,7 @@
   yum:
     name: '*'
     state: latest
-    update_cache: yes
+    update_cache: true
   when: updateall
   tags: update
 
