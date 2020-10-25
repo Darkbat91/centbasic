@@ -10,6 +10,7 @@
       - yum-utils
       - iptables-services
       - policycoreutils-python
+      - rsyslog
     state: present
     update_cache: true
 

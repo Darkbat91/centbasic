@@ -10,7 +10,8 @@ env:
   global:
     - ROLE_NAME: openvpn
   matrix:
-    - MOLECULE_DISTRO: centos8
+    # Lots of changes to work in centos8
+    # - MOLECULE_DISTRO: centos8
     - MOLECULE_DISTRO: centos7
 
 before_install:
