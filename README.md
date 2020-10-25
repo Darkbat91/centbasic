@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Darkbat91/centbasic.svg?branch=v1)](https://travis-ci.org/Darkbat91/centbasic)
+
 # Basic Centos Configuration
 
 This role just fills some basic configuration and upate management.

@@ -15,8 +15,9 @@
 
 - name: Basic CentOS | Shell Alias
   copy:
-    src: ../files/alias.sh
+    src: alias.sh
     dest: /etc/profile.d/alias.sh
+    mode: 0555
   when: alias
 
 - name: Basic CentOS | Configure yumcron
@@ -35,6 +36,7 @@
     regexp: ^NOZEROCONF=
     line: NOZEROCONF=yes
     state: present
+    mode: 0555
     create: true
 
 - name: Basic CentOS | harden rsyslog conf
