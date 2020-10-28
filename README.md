@@ -11,7 +11,7 @@ This role just fills some basic configuration and upate management.
     * Updates all packages on the system
         * Does not by default restart the machine if the kernel updates
     * configures yumcron to apply automatic Updates
-        
+
 ## Configuration
 
 Two optional settings are
