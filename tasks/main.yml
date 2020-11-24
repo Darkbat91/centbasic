@@ -12,6 +12,7 @@
       - policycoreutils-python
       - rsyslog
       - openssh-server
+      - python3
     state: present
     update_cache: true
 
