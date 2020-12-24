@@ -21,4 +21,3 @@
     name: "yum-cron"
     state: started
     enabled: true
-  when: true
