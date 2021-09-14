@@ -17,6 +17,6 @@
   cron:
     name: "Update Reboot check"
     minute: "13"
-    hour: "0,12"
+    hour: "0"
     job: "needs-restarting -r || shutdown -rt now"
   when: schedule_update_reboot

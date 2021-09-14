@@ -1,12 +1,11 @@
 ---
 - name: Basic CentOS | Install utils
-  package:
-    pkg:
+  ansible.builtin.dnf:
+    name:
       - vim
       - fail2ban
       - ntp
       - logrotate
-      - yum-cron
       - yum-utils
       - iptables-services
       - policycoreutils-python
@@ -17,7 +16,7 @@
     update_cache: true
 
 - name: Basic CentOS | Shell Alias
-  copy:
+  ansible.builtin.copy:
     src: alias.sh
     dest: /etc/profile.d/alias.sh
     mode: 0555
@@ -25,8 +24,8 @@
 
 - name: Basic CentOS | Configure yumcron
   import_tasks: yumcron.yml
-  when: yumcron
-  tags: yumcron
+  when: customyumcron
+  tags: customyumcron
 
 - name: Basic CentOS | Configure passwords
   import_tasks: passwords.yml
@@ -34,7 +33,7 @@
   tags: passwords
 
 - name: Basic CentOS | Disable zeroconf
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "/etc/sysconfig/network"
     regexp: ^NOZEROCONF=
     line: NOZEROCONF=yes
@@ -43,13 +42,13 @@
     create: true
 
 - name: Basic CentOS | harden rsyslog conf
-  file:
+  ansible.builtin.file:
     path: /etc/rsyslog.conf
     mode: "{{ rsyslog_mask }}"
   when: hardenrsyslog
 
 - name: Basic CentOS | harden rsyslog d
-  file:
+  ansible.builtin.file:
     path: /etc/rsyslog.d
     recurse: true
     mode: "{{ rsyslog_mask }}"
@@ -60,8 +59,8 @@
   when: sshd
   tags: ssh
 
-- name: Basic CentOS |upgrade any out of date packages
-  yum:
+- name: Basic CentOS | upgrade any out of date packages
+  ansible.builtin.dnf:
     name: '*'
     state: latest
     update_cache: true

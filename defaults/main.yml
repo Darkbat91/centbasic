@@ -22,8 +22,8 @@ rsyslog_mask: 0600
 # Update all the packages on the system
 updateall: true
 
-# Configure yumcron to update security settings only
-yumcron: true
+# Configure custom yumcron to update security settings only
+customyumcron: true
 
 # Allow this command to reboot the system if necessary
 allow_reboot: false

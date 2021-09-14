@@ -1,23 +1,16 @@
 ---
-- name: Basic CentOS | Install yum-cron
-  package:
-    pkg:
-      - yum-cron
-    state: present
-    update_cache: true
+- name: Basic CentOS | Cron Update
+  ansible.builtin.copy:
+    src: update.py
+    dest: /usr/local/bin/yumupdate.py
+    mode: 0550
+    owner: root
+    group: root
+  when: alias
 
-- name: Basic CentOS | Configure yum-cron
-  lineinfile:
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    dest: /etc/yum/yum-cron.conf
-    state: present
-  with_items:
-    - {regexp: '^update_cmd\s*=\s*', line: "update_cmd = security"}
-    - {regexp: '^apply_updates\s*=\s*', line: "apply_updates = yes"}
-
-- name: Basic CentOS | enable  yum-cron
-  service:
-    name: "yum-cron"
-    state: started
-    enabled: true
+- name: Basic CentOS | Update Daily
+  ansible.builtin.cron:
+    name: "Cron Updates"
+    minute: "0"
+    hour: "2"
+    job: "/usr/local/bin/yumupdate.py"

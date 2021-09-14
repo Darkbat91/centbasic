@@ -10,7 +10,8 @@ This role just fills some basic configuration and upate management.
     * Configures a few basic aliases
     * Updates all packages on the system
         * Does not by default restart the machine if the kernel updates
-    * configures yumcron to apply automatic Updates
+    * ~~configures yumcron to apply automatic Updates~~
+      * yum-cron is not effective at all on Centos due to the metadata not being visable 
 
 ## Configuration
 
