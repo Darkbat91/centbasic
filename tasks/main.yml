@@ -1,4 +1,13 @@
 ---
+- name: Basic CentOS | Install dnf
+  package:
+    name: "dnf"
+  vars:
+    ansible_python_interpreter: "/usr/bin/python2"
+  when:
+    - "ansible_distribution == 'CentOS'"
+    - "ansible_distribution_major_version | int == 7"
+
 - name: Basic CentOS | Install utils
   ansible.builtin.dnf:
     name:
@@ -14,6 +23,30 @@
       - python3
     state: present
     update_cache: true
+  vars:
+    ansible_python_interpreter: "/usr/bin/python2"
+  when:
+    - "ansible_distribution == 'CentOS'"
+    - "ansible_distribution_major_version | int == 7"
+
+- name: Basic CentOS | Install utils
+  ansible.builtin.dnf:
+    name:
+      - vim
+      - fail2ban
+      - ntp
+      - logrotate
+      - yum-utils
+      - iptables-services
+      - policycoreutils-python
+      - rsyslog
+      - openssh-server
+      - python3
+    state: present
+    update_cache: true
+  when:
+    - "ansible_distribution == 'CentOS'"
+    - "ansible_distribution_major_version | int == 8"
 
 - name: Basic CentOS | Shell Alias
   ansible.builtin.copy:
@@ -64,11 +97,28 @@
     name: '*'
     state: latest
     update_cache: true
-  when: updateall
+  vars:
+    ansible_python_interpreter: "/usr/bin/python2"
+  when:
+    - "ansible_distribution == 'CentOS'"
+    - "ansible_distribution_major_version | int == 7"
+    - updateall
   tags:
     - skip_ansible_lint
     - update
 
+- name: Basic CentOS | upgrade any out of date packages
+  ansible.builtin.dnf:
+    name: '*'
+    state: latest
+    update_cache: true
+  when:
+    - "ansible_distribution == 'CentOS'"
+    - "ansible_distribution_major_version | int == 8"
+    - updateall
+  tags:
+    - skip_ansible_lint
+    - update
 
 - name: Basic CentOS | Reboot check
   import_tasks: reboot.yml
