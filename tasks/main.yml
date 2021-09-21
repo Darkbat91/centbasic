@@ -10,17 +10,7 @@
 
 - name: Basic CentOS | Install utils
   ansible.builtin.dnf:
-    name:
-      - vim
-      - fail2ban
-      - ntp
-      - logrotate
-      - yum-utils
-      - iptables-services
-      - policycoreutils-python
-      - rsyslog
-      - openssh-server
-      - python3
+    name: "{{ default_packages }}"
     state: present
     update_cache: true
   vars:
@@ -31,17 +21,7 @@
 
 - name: Basic CentOS | Install utils
   ansible.builtin.dnf:
-    name:
-      - vim
-      - fail2ban
-      - ntp
-      - logrotate
-      - yum-utils
-      - iptables-services
-      - policycoreutils-python
-      - rsyslog
-      - openssh-server
-      - python3
+    name: "{{ default_packages }}"
     state: present
     update_cache: true
   when:
@@ -93,7 +73,7 @@
   tags: ssh
 
 - name: Basic CentOS | upgrade any out of date packages
-  ansible.builtin.dnf:
+  ansible.builtin.yum:
     name: '*'
     state: latest
     update_cache: true

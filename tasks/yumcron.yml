@@ -6,7 +6,6 @@
     mode: 0550
     owner: root
     group: root
-  when: alias
 
 - name: Basic CentOS | Update Daily
   ansible.builtin.cron:

@@ -36,3 +36,15 @@ permit_ssh_forward: false
 
 # Configure to harden smb
 secure_smb: true
+
+default_packages:
+  - vim
+  - fail2ban
+  - ntp
+  - logrotate
+  - yum-utils
+  - iptables-services
+  - policycoreutils-python
+  - rsyslog
+  - openssh-server
+  - python3
