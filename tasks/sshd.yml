@@ -17,7 +17,8 @@
     - {reg: '^(#)?PermitRootLogin', line: 'PermitRootLogin no'}
     - {reg: '^(#)?AllowTcpForwarding', line: 'AllowTcpForwarding {% if permit_ssh_forward %}yes{% else %}no{% endif %}'}
     - {reg: '^(#)?Compression', line: 'Compression no'}
-    - {reg: '^(#)?LogLevel', line: 'LogLevel VERBOSE'}
+    - {reg: '^(#)?LogLevel', line: 'LogLevel {{ ssh_log_level }}'}
+    - {reg: '^(#)?AllowUsers', line: 'AllowUsers {{ ssh_allowed_users }}'}
     - {reg: '^(#)?MaxAuthTries', line: 'MaxAuthTries 1'}
     - {reg: '^(#)?MaxSessions', line: 'MaxSessions 2'}
     - {reg: '^(#)?TCPKeepAlive', line: 'TCPKeepAlive no'}

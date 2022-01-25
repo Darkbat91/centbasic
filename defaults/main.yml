@@ -4,6 +4,10 @@ sshd: true
 
 ssh_banner_text: "Unauthorized access to this machine is prohibited."
 
+ssh_log_level: 'VERBOSE'
+
+ssh_allowed_users: '*'
+
 # Common Centos Aliases
 alias: true
 
