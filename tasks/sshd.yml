@@ -22,6 +22,7 @@
     - {reg: '^(#)?MaxAuthTries', line: 'MaxAuthTries 1'}
     - {reg: '^(#)?MaxSessions', line: 'MaxSessions 2'}
     - {reg: '^(#)?TCPKeepAlive', line: 'TCPKeepAlive no'}
+    - {reg: '^(#)?LoginGraceTime', line: 'LoginGraceTime 60'}
     - {reg: '^(#)?UsePrivilegeSeparation', line: 'UsePrivilegeSeparation SANDBOX'}
     - {reg: '^(#)?X11Forwarding', line: 'X11Forwarding no'}
     # - { reg: '^(#)?AllowUsers', line: 'AllowUsers {{ allowed_ssh_users }}'}
