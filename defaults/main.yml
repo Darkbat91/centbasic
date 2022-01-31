@@ -8,6 +8,8 @@ ssh_log_level: 'VERBOSE'
 
 ssh_allowed_users: '*'
 
+ssh_login_grace: '2m'
+
 # Common Centos Aliases
 alias: true
 

@@ -18,6 +18,7 @@
     - {reg: '^(#)?AllowTcpForwarding', line: 'AllowTcpForwarding {% if permit_ssh_forward %}yes{% else %}no{% endif %}'}
     - {reg: '^(#)?Compression', line: 'Compression no'}
     - {reg: '^(#)?LogLevel', line: 'LogLevel {{ ssh_log_level }}'}
+    - {reg: '^(#)?LoginGraceTime', line: 'LoginGraceTime {{ ssh_login_grace }}'}
     - {reg: '^(#)?AllowUsers', line: 'AllowUsers {{ ssh_allowed_users }}'}
     - {reg: '^(#)?MaxAuthTries', line: 'MaxAuthTries 1'}
     - {reg: '^(#)?MaxSessions', line: 'MaxSessions 2'}
