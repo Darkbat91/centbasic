@@ -1,11 +1,11 @@
 ---
 - name: Basic CentOS | SSHD load
-  service:
+  ansible.builtin.service:
     name: "sshd"
     state: started
 
 - name: Basic CentOS | SSHD configuration
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: "{{ item.reg }}"
     line: "{{ item.line }}"
@@ -50,12 +50,13 @@
     - {reg: '^(#)?Banner', line: 'Banner /etc/issue'}
     # Suggested by lynis audit
     - {reg: '^(#)?UseDNS', line: 'UseDNS no'}
-    - {reg: '^(#)?AllowAgentForwarding', line: 'AllowAgentForwarding {% if permit_ssh_forward %}yes{% else %}no{% endif %}'}
-    # CCE-4475-0 - Emulation of the rsh command through the ssh server should be disabled
+    - reg: '^(#)?AllowAgentForwarding'
+      line: 'AllowAgentForwarding {% if permit_ssh_forward %}yes{% else %}no{% endif %}'
+      # CCE-4475-0 - Emulation of the rsh command through the ssh server should be disabled
   notify: restart_sshd
 
 - name: Basic CentOS | Add legal banner
-  copy:
+  ansible.builtin.copy:
     content: "{{ ssh_banner_text }}\n"
     dest: "{{ item }}"
     mode: 0440

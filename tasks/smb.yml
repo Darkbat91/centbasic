@@ -1,11 +1,11 @@
 ---
 - name: Basic CentOS | Check if Samba is installed
-  stat:
+  ansible.builtin.stat:
     path: /usr/lib/systemd/system/smb.service
   register: sambainstalled
 
 - name: Basic CentOS | set minimum protocol to SMB2
-  lineinfile:
+  ansible.builtin.lineinfile:
     insertafter: '^\[global\]$'
     dest: /etc/samba/smb.conf
     regexp: '\smin protocol = SMB2'
@@ -14,7 +14,7 @@
   when: sambainstalled.stat.exists
 
 - name: Basic CentOS | Remove the smb configuration file
-  file:
+  ansible.builtin.file:
     path: /etc/samba
     state: absent
   when: not sambainstalled.stat.exists

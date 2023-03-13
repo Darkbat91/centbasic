@@ -1,3 +1,6 @@
+---
 skip_list:
-  - '106' # Role name must match ^[a-z][a-z0-9_]+$ pattern
-  - '701'  # meta/main.yml should contain relevant info
+    - role-name
+    - yaml[line-length]
+    - meta-no-info
+    - meta-incorrect

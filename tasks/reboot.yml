@@ -1,6 +1,6 @@
 ---
 - name: Basic CentOS | check reboot
-  shell: needs-restarting -r
+  ansible.builtin.shell: needs-restarting -r
   register: rebootcheck_out
   ignore_errors: true
   changed_when: false
@@ -8,13 +8,13 @@
     - skip_ansible_lint
 
 - name: Basic CentOS | Reboot
-  reboot:
+  ansible.builtin.reboot:
     reboot_timeout: 3600
     # if the exit is not 0 then we need to reboot
   when: rebootcheck_out.rc != 0
 
 - name: Basic CentOS | Nightly reboot
-  cron:
+  ansible.builtin.cron:
     name: "Update Reboot check"
     minute: "13"
     hour: "0"

@@ -1,6 +1,6 @@
 ---
 - name: Basic CentOS | SSHD Restart
-  service:
+  ansible.builtin.service:
     name: sshd
     state: restarted
   listen: restart_sshd

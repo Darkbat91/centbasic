@@ -1,6 +1,6 @@
 ---
 - name: Basic CentOS | Install dnf
-  package:
+  ansible.builtin.package:
     name: "dnf"
   vars:
     ansible_python_interpreter: "/usr/bin/python2"
@@ -36,12 +36,12 @@
   when: alias
 
 - name: Basic CentOS | Configure yumcron
-  import_tasks: yumcron.yml
+  ansible.builtin.import_tasks: yumcron.yml
   when: customyumcron
   tags: customyumcron
 
 - name: Basic CentOS | Configure passwords
-  import_tasks: passwords.yml
+  ansible.builtin.import_tasks: passwords.yml
   when: passwords
   tags: passwords
 
@@ -55,7 +55,7 @@
     create: true
 
 - name: Basic CentOS | Configure sshd
-  import_tasks: sshd.yml
+  ansible.builtin.import_tasks: sshd.yml
   when: sshd
   tags: ssh
 
@@ -88,11 +88,11 @@
     - update
 
 - name: Basic CentOS | Reboot check
-  import_tasks: reboot.yml
+  ansible.builtin.import_tasks: reboot.yml
   when: allow_reboot
   tags: reboot
 
 - name: Basic CentOS | SMB Check
-  import_tasks: smb.yml
+  ansible.builtin.import_tasks: smb.yml
   when: secure_smb
   tags: smb
