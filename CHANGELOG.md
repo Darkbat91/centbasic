@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - N/A
 
+## [2.0.1] - 2023-03-13
+### Added
+- None
+
+### Changed
+- Removed syslog hardening from role due to incorrect implementation
+
+### Removed
+- None
+
 ## [1.0.0] - 2020-10-25
 ### Added
 - Password compliance settings

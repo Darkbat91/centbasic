@@ -54,19 +54,6 @@
     mode: 0555
     create: true
 
-- name: Basic CentOS | harden rsyslog conf
-  ansible.builtin.file:
-    path: /etc/rsyslog.conf
-    mode: "{{ rsyslog_mask }}"
-  when: hardenrsyslog
-
-- name: Basic CentOS | harden rsyslog d
-  ansible.builtin.file:
-    path: /etc/rsyslog.d
-    recurse: true
-    mode: "{{ rsyslog_mask }}"
-  when: hardenrsyslog
-
 - name: Basic CentOS | Configure sshd
   import_tasks: sshd.yml
   when: sshd
